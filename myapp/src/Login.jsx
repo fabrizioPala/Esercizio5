@@ -28,6 +28,8 @@ export function Login({ onLogin }) {
 
     const handleSubmit = () => {
         onLogin(data);
+        e.preventDefault()
+        
     };
     function handleReset(){
         setData({
@@ -41,7 +43,7 @@ export function Login({ onLogin }) {
 
     return (
         <>
-            <div style={divStyle}>
+            <form onSubmit={handleSubmit}   style={divStyle}>
                 <input
                     name="username"
                     value={data.username}
@@ -63,12 +65,12 @@ export function Login({ onLogin }) {
                 />
                 </label>
                 
-                <button onClick={handleSubmit} disabled={data.username === "" || data.password === ""}>
+                <button disabled={data.username === "" || data.password === ""}>
                     Submit
                 </button>
                 <button onClick={handleReset}>Reset</button>
 
-            </div>
+            </form>
         </>
     );
 }
